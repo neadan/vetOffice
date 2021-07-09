@@ -41,9 +41,5 @@ class Pet(models.Model):
         ordering = ["-name"]
 
 
-# class Appointment(models.Model):
-#     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
-#     appointment_time = models.DateTimeField()
-
 
 

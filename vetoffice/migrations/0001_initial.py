@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=30)),
                 ('age', models.IntegerField(default=0)),
                 ('animal_type', models.CharField(choices=[('DO', 'Dog'), ('CA', 'Cat'), ('BI', 'Bird'), ('RE', 'Reptile'), ('OT', 'Other')], default='OT', max_length=2)),
-                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='booking.owner')),
+                ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='vetoffice.owner')),
             ],
             options={
                 'ordering': ['-name'],
