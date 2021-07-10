@@ -1,0 +1,29 @@
+{% extends './base.html' %}
+{% block content %}
+<h2>Pet List</h2>
+<a href="{% url 'petcreate' %}"><button class="btn">Add Pet</button></a>
+<table id="pets">
+  <tr>
+    <th>ID</th>
+    <th>Pet Name</th>
+    <th>Animal Type</th>
+      <th>Breed</th>
+      <th>Age</th>
+      <th>Owner</th>
+      <th> </th>
+      <th> </th>
+  </tr>
+  {% for pet in pet_list %}
+  <tr>
+      <td>{{ pet.id }}</td>
+      <td>{{ pet.name }}</td>
+      <td>{{ pet.animal_type }}</td>
+      <td>{{ pet.breed }}</td>
+      <td>{{ pet.age }}</td>
+      <td>{{ pet.owner.first_name }} {{ pet.owner.last_name}}</td>
+      <td><a href="{% url 'petupdate' pet.id %}"><button>Edit</button></a></td>
+      <td><a href="{% url 'petdelete' pet.id %}"><button>Delete</button></a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
