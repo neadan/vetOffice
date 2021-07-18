@@ -7,14 +7,18 @@ from vetoffice.models import Owner, Pet
 
 
 def home(request):
-    try:
-        p_key = 10
-        found_pet = Pet.objects.get(pk=p_key)
-    except Pet.DoesNotExist:
-        raise Http404(f"There was no pet found with pk={p_key}")
+    return render(request, "vetoffice/home.html")
 
-    context = {"name": "Djangoer", "pet": found_pet}
-    return render(request, "vetoffice/home.html", context)
+
+def pets_of_owner(request, name):
+    try:
+        owner = Owner.objects.get(first_name=name)
+    except Owner.DoesNotExist:
+        raise Http404(f"There is no owner with the name {name}")
+
+    pets = Pet.objects.filter(owner=owner)
+    context = {"pet_list": pets, "owner": owner.first_name}
+    return render(request, "vetoffice/pets_of_owner.html", context)
 
 
 class OwnerList(ListView):

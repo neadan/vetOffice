@@ -11,5 +11,6 @@ urlpatterns = [
    path("owner/update/<pk>", views.OwnerUpdate.as_view(), name="ownerupdate"),
    path("pet/update/<pk>", views.PetUpdate.as_view(), name="petupdate"),
    path("owner/delete/<pk>", views.OwnerDelete.as_view(), name="ownerdelete"),
-   path("pet/delete/<pk>", views.PetDelete.as_view(), name="petdelete")
+   path("pet/delete/<pk>", views.PetDelete.as_view(), name="petdelete"),
+   path("pets/of/<name>", views.pets_of_owner, name="petsofowner"),
 ]
